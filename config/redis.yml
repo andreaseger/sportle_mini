@@ -1,0 +1,15 @@
+development:
+  host: "localhost"
+  port: 6379
+  password:
+  db: 3
+test:
+  host: "localhost"
+  port: 6379
+  password:
+  path: 12
+productive:
+  host: "localhost"
+  port: 6379
+  password:
+  path: 1

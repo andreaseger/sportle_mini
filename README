@@ -1,0 +1,10 @@
+Sportle Mini
+===
+
+This will become a small app to store my swim schedules. A Redis Backend is used to store them. Basic auth will secure editing access. Disqus will be provide commenting.
+
+
+meta
+---
+
+sch1zo
