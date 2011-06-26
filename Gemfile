@@ -8,7 +8,7 @@ gem 'rails', '3.1.0.rc4'
 # Database
 gem 'hiredis'
 gem 'redis', :require => ["redis/connection/hiredis", "redis"]
-gem 'redis_storage', '>= 0.2.4'
+gem 'redis_storage', '>= 0.2.5'
 
 # Views
 gem 'haml-rails'

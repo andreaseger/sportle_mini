@@ -1,0 +1,19 @@
+%p#notice= notice
+
+%p
+  %b Content:
+  = @schedule.content
+%p
+  %b Course:
+  = @schedule.long_course ? '50m' : '25m'
+%p
+  %b Date:
+  = Date.parse(@schedule.date).strftime '%B %e %Y'
+%p
+  Created
+  = time_ago_in_words(Time.parse(@schedule.created_at))
+  ago
+
+= link_to 'Edit', edit_schedule_path(@schedule)
+\|
+= link_to 'Back', schedules_path
