@@ -16,11 +16,7 @@ Spork.prefork do
 
   RSpec.configure do |config|
     config.mock_with :mocha
-    config.before :all do
-      $db = Redis.new
-    end
     config.before :each do
-      $db.select 12
       $db.flushdb
     end
   end

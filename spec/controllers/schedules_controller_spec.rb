@@ -20,6 +20,9 @@ require 'spec_helper'
 
 describe SchedulesController do
 
+  before :each do
+    request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials('master','secret')
+  end
   # This should return the minimal set of attributes required to create a valid
   # Schedule. As you add validations to Schedule, be sure to
   # update the return value of this method accordingly.

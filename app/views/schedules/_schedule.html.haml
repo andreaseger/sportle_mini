@@ -1,0 +1,8 @@
+.info{:class => schedule.long_course == true ? "long" : "short"}
+  = schedule.long_course == true ? "50m" : "25m"
+  \|
+  = schedule.date.strftime '%B %e %Y'
+  \|
+  = time_ago_in_words(schedule.created_at)
+.schedule
+  = schedule.content.gsub("\n","<br/>").html_safe

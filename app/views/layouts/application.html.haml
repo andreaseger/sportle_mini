@@ -1,0 +1,25 @@
+!!! 5
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ --> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+%head
+  %meta{:charset=>"utf-8"}
+  %title
+    Sportle Mini
+  %meta{:name=>"description", :content=>"app to store and share swim schedules"}
+  %meta{:name=>"author", :content=>"sch1zo"}
+
+  = stylesheet_link_tag    "application"
+  -#%script{:src=>"/js/modernizr-1.7.min.js"}
+  = csrf_meta_tags
+%body
+  #container
+  %header
+  #main
+    = yield
+  %footer
+
+  = javascript_include_tag "application"

@@ -1,12 +1,13 @@
 class SchedulesController < ApplicationController
+  http_basic_authenticate_with :name => "master", :password => "secret", :except => [:index, :show]
   # GET /schedules
   # GET /schedules.json
   def index
-    @schedules = Schedule.all
+    @schedules = Schedule.all.sort_by{|s| s.created_at}.reverse
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @schedules }
+      format.json { render json: @schedules.to_json }
     end
   end
 
@@ -17,7 +18,7 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @schedule }
+      format.json { render json: @schedule.to_json }
     end
   end
 
@@ -28,7 +29,7 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @schedule }
+      format.json { render json: @schedule.to_json }
     end
   end
 
@@ -40,20 +41,12 @@ class SchedulesController < ApplicationController
   # POST /schedules
   # POST /schedules.json
   def create
-    par = params[:schedule]
-    par['created_at'] = Time.now
-    if par['date(1i)']
-      par['date'] = Date.new par['date(1i)'].to_i, par['date(2i)'].to_i ,par['date(3i)'].to_i
-      par.delete('date(1i)')
-      par.delete('date(2i)')
-      par.delete('date(3i)')
-    end
-    @schedule = Schedule.new(par)
+    @schedule = Schedule.new(params[:schedule].merge('created_at' => Time.now))
 
     respond_to do |format|
       if @schedule.save
         format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
-        format.json { render json: @schedule, status: :created, location: @schedule }
+        format.json { render json: @schedule.to_json, status: :created, location: @schedule }
       else
         format.html { render action: "new" }
         format.json { render json: @schedule.errors, status: :unprocessable_entity }
@@ -67,9 +60,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
 
     respond_to do |format|
-      par = params[:schedule]
-      par['date'] = Date.new par['date(1i)'],par['date(2i)'],par['date(3i)'] if par['date(1i)']
-      if @schedule.update_attributes(par)
+      if @schedule.update_attributes(params[:schedule])
         format.html { redirect_to @schedule, notice: 'Schedule was successfully updated.' }
         format.json { head :ok }
       else
