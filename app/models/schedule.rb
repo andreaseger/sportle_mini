@@ -15,14 +15,14 @@ class Schedule < RedisStorage::Model
     if v.class == Date
       @date = v
     else
-      @date = Date.parse(v)
+      @date = Date.parse(v) unless v.nil?
     end
   end
   def created_at=(v)
     if v.class == Time
       @created_at = v
     else
-      @created_at = Time.parse(v)
+      @created_at = Time.parse(v) unless v.nil?
     end
   end
 end

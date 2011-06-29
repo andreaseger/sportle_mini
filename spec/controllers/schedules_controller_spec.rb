@@ -27,7 +27,7 @@ describe SchedulesController do
   # Schedule. As you add validations to Schedule, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {'content' => 'Lorem Ipsum', 'long_course' => true, 'date' => Time.now.to_date}
+    {'content' => 'Lorem Ipsum', 'long_course' => true, 'date' => 3.days.ago.to_date, 'created_at' => Time.now}
   end
 
   describe "POST create" do
@@ -70,7 +70,7 @@ describe SchedulesController do
       it "assigns the requested schedule as @schedule" do
         schedule = Schedule.create valid_attributes
         put :update, :id => schedule.id, :schedule => valid_attributes
-        assigns(:schedule).serializable_hash.should eq(schedule.serializable_hash)
+        assigns(:schedule).to_json.should eq(schedule.to_json)
       end
 
       it "redirects to the schedule" do
