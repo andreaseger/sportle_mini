@@ -2,12 +2,13 @@
 
 %p
   %b Content:
-  = @schedule.content
+  %br
+  = @schedule.content.gsub("\n", '<br />').html_safe
 %p
   %b Course:
   = @schedule.long_course ? '50m' : '25m'
 %p
-  %b Date:
+  %b  Date:
   = Date.parse(@schedule.date).strftime '%B %e %Y'
 %p
   Created

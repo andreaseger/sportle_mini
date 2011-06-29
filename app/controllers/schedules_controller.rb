@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  http_basic_authenticate_with :name => 'master', :password => 'secret', :except => [:index, :show]
   # GET /schedules
   # GET /schedules.json
   def index
