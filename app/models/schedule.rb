@@ -3,7 +3,8 @@ class Schedule < RedisStorage::Model
     [ :id, :content, :long_course, :date, :created_at ]
   end
   attr_accessor *attrs
-  validates_inclusion_of :long_course, :in => [true,false]
+  validates :long_course, :inclusion => {:in => [true,false]}
+
   def long_course=(v)
     if !!v == v
       @long_course = v
