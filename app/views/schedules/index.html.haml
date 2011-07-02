@@ -1,10 +1,18 @@
 #schedules
-  - @schedules.each do |schedule|
-    .content
-      = render schedule
-      %ul.controls
-        %li= link_to 'Show', schedule
-        %li= link_to 'Edit', edit_schedule_path(schedule)
-        %li= link_to 'Destroy', schedule, :confirm => 'Are you sure?', :method => :delete
+  = render @schedules
 
-= link_to 'New Schedule', new_schedule_path
+= form_for Schedule.new, :remote => true do |f|
+  .field
+    = f.label :content
+    = f.text_area :content
+  .field
+    = f.label :long_course, "Course"
+    = f.radio_button :long_course, true
+    50m
+    = f.radio_button :long_course, false
+    25m
+  .field
+    = f.label :date
+    = f.text_field :date
+  .actions
+    = f.submit 'Save'

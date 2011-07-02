@@ -13,13 +13,12 @@
   %meta{:name=>"author", :content=>"sch1zo"}
 
   = stylesheet_link_tag    "application"
-  -#%script{:src=>"/js/modernizr-1.7.min.js"}
   = csrf_meta_tags
 %body
   #container
-  %header
-  #main
-    = yield
-  %footer
+    %header
+    %div{:role => 'main'}
+      = yield
+    %footer
 
   = javascript_include_tag "application"

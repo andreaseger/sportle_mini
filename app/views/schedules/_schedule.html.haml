@@ -1,8 +1,14 @@
-.info{:class => schedule.long_course == true ? "long" : "short"}
-  = schedule.long_course == true ? "50m" : "25m"
-  \|
-  = schedule.date.strftime '%B %e %Y'
-  \|
-  = time_ago_in_words(schedule.created_at)
-.schedule
-  = schedule.content.gsub("\n","<br/>").html_safe
+.content
+  .info{:class => schedule.long_course == true ? "long" : "short"}
+    = schedule.long_course == true ? "50m" : "25m"
+    \|
+    = schedule.date.strftime '%B %e %Y'
+    \|
+    = time_ago_in_words(schedule.created_at)
+  .schedule
+    = schedule.content.gsub("\n","<br/>").html_safe
+  %ul.controls
+    %li= link_to_unless_current 'Show', schedule
+    %li= link_to 'Edit', edit_schedule_path(schedule)
+    %li= link_to 'Destroy', schedule, :confirm => 'Are you sure?', :method => :delete
+    %li= link_to_unless_current 'View All', schedules_path

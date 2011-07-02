@@ -8,6 +8,7 @@ class SchedulesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @schedules.to_json }
+      format.js
     end
   end
 
@@ -47,6 +48,7 @@ class SchedulesController < ApplicationController
       if @schedule.save
         format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
         format.json { render json: @schedule.to_json, status: :created, location: @schedule }
+        format.js { redirect_to schedules_path, notice: 'Schedule was successfully created.'}
       else
         format.html { render action: "new" }
         format.json { render json: @schedule.errors, status: :unprocessable_entity }

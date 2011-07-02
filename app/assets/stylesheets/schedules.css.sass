@@ -1,21 +1,31 @@
-body
-  .content
-    background-color: #c5c9c7
-    margin: 15px
-    width: 450px
-    .long
-      background-color: #056eee
-    .short
-      background-color: #75bbfd
-    .info
-      border-bottom:
-        style: solid
-        color: black
-    .schedule
+@import base
+@import susy
+@import defaults
+@import compass/utilities
+
+#container
+  +container
+  #schedules
+    +columns(6)
+    +alpha
+    .content
+      background-color: #c5c9c7
       margin: 15px
-    .controls
-      maring: 0
-      margin-top: 7px
-      li
-        display: inline
-        list-style-type: none
+      width: 450px
+      .long
+        background-color: #056eee
+      .short
+        background-color: #75bbfd
+      .info
+        border-bottom:
+          style: solid
+          color: black
+      .schedule
+        margin: 15px
+      .controls
+        +no-bullets
+        +horizontal-list
+        margin: 7px
+  #new_schedule
+    +columns(5)
+    +omega

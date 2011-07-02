@@ -1,7 +1,3 @@
 %p#notice= notice
 
-.content
-  = render @schedule
-  %ul.controls
-    %li= link_to 'Edit', edit_schedule_path(@schedule)
-    %li= link_to 'View All', schedules_path
+= render @schedule
