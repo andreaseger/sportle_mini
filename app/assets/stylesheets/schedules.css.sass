@@ -3,29 +3,60 @@
 @import defaults
 @import compass/utilities
 
-#container
+$lighter_grey: #f1f1f1
+$light_grey: #c5c9c7
+$blue50: #056eee
+$blue25: #75bbfd
+
+a
+  &:focus, &:hover, &:active
+    background-color: $light_grey
+
+.container
   +container
+  //+susy-grid-background
+  nav
+    +full
+    ul
+      +no-bullets
+      +horizontal-list
+      padding: 10px 30px
+      a
+        padding: 7px 14px
+        background-color: $lighter_grey
+        &:hover
+          background-color: $light_grey
+  .content
+    color: black
+    background-color: $light_grey
+    margin: 15px
+    //width: 450px
+    .long
+      background-color: $blue50
+    .short
+      background-color: $blue25
+    .info
+      padding: 6px 18px
+      border-bottom:
+        style: solid
+        color: black
+        width: 3px
+    .schedule
+      margin: 15px
+    .controls
+      +no-bullets
+      +horizontal-list
+      padding: 7px
+      margin: 0 40px
+      a
+        padding: 3px 10px
+        background-color: $light_grey
+        &:hover
+          background-color: $lighter_grey
   #schedules
     +columns(6)
     +alpha
-    .content
-      background-color: #c5c9c7
-      margin: 15px
-      width: 450px
-      .long
-        background-color: #056eee
-      .short
-        background-color: #75bbfd
-      .info
-        border-bottom:
-          style: solid
-          color: black
-      .schedule
-        margin: 15px
-      .controls
-        +no-bullets
-        +horizontal-list
-        margin: 7px
   #new_schedule
     +columns(5)
     +omega
+    padding: 15px

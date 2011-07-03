@@ -4,6 +4,7 @@ class SchedulesController < ApplicationController
   # GET /schedules.json
   def index
     @schedules = Schedule.all.sort_by{|s| s.created_at}.reverse
+    @newest = @schedules.first
 
     respond_to do |format|
       format.html # index.html.erb

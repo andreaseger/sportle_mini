@@ -15,8 +15,14 @@
   = stylesheet_link_tag    "application"
   = csrf_meta_tags
 %body
-  #container
-    %header
+  .container
+    %nav
+      %ul
+        %li.first= link_to "random", Schedule.random
+        - if @schedule
+          %li= link_to_unless_current "previous", @schedule.previous
+          %li= link_to 'view all schedules', schedules_path
+          %li.last= link_to_unless_current "next", @schedule.next
     %div{:role => 'main'}
       = yield
     %footer

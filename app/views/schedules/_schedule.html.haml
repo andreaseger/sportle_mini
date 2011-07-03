@@ -8,7 +8,7 @@
   .schedule
     = schedule.content.gsub("\n","<br/>").html_safe
   %ul.controls
-    %li= link_to_unless_current 'Show', schedule
     %li= link_to 'Edit', edit_schedule_path(schedule)
     %li= link_to 'Destroy', schedule, :confirm => 'Are you sure?', :method => :delete
-    %li= link_to_unless_current 'View All', schedules_path
+    - if @schedules
+      %li= link_to 'Show', schedule

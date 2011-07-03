@@ -1,3 +1,5 @@
-%p#notice= notice
+- if notice
+  %p#notice= notice
 
-= render @schedule
+#schedules
+  = render @schedule

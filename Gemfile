@@ -19,7 +19,7 @@ gem 'therubyracer'
 gem 'sass-rails', :git => 'https://github.com/rails/sass-rails.git'
 gem 'coffee-script'
 gem 'uglifier'
-gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'#, :require => false
+gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
 
 gem 'jquery-rails'
 
@@ -42,9 +42,6 @@ group :test, :development do
   gem 'bond'
   gem 'sketches'
 end
-
-# Deploy with Capistrano
-gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'

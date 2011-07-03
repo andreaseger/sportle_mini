@@ -26,4 +26,17 @@ class Schedule < RedisStorage::Model
       @created_at = Time.parse(v) unless v.nil?
     end
   end
+
+  def previous
+    keys = $db.smembers(self.class.persisted_key).sort
+    i = keys.index("#{self.class.db_key}:#{id}")
+    return nil if i == 0
+    self.class.load(keys[i-1])
+  end
+  def next
+    keys = $db.smembers(self.class.persisted_key).sort_by{|s| s.split(':')[1].to_i}
+    i = keys.index("#{self.class.db_key}:#{id}")
+    return nil if i == keys.length - 1
+    self.class.load(keys[i+1])
+  end
 end

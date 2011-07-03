@@ -1,4 +1,5 @@
-!= "$('#schedules').html('#{escape_javascript(render(@schedules))}');"
+=#!= "$('#schedules').html('#{escape_javascript(render(@schedules))}');"
+!= "$('#schedules').prepend('#{escape_javascript(render(@newest))}');"
 != "$('#new_schedule')[0].reset();"
 != "$('#new_schedule')[1].reset();"
 != "$('#new_schedule')[2].reset();"
