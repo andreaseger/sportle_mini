@@ -43,7 +43,7 @@ class SchedulesController < ApplicationController
   # POST /schedules
   # POST /schedules.json
   def create
-    @schedule = Schedule.new(params[:schedule].merge('created_at' => Time.now))
+    @schedule = ::Schedule.new(params[:schedule].merge('created_at' => Time.now))
 
     respond_to do |format|
       if @schedule.save

@@ -27,7 +27,7 @@ describe SchedulesController do
   # Schedule. As you add validations to Schedule, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {'content' => 'Lorem Ipsum', 'long_course' => true, 'date' => 3.days.ago.to_date, 'created_at' => Time.now}
+    {'content' => 'Lorem Ipsum', 'long_course' => true, 'date' => 3.days.ago.to_date}
   end
 
   describe "POST create" do
